@@ -1,0 +1,49 @@
+@import url('bootstrap');
+body {
+  background-color: black;
+  color: white;
+}
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animeLeft {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animeLeft 0.3s forwards;
+}
+@keyframes animeLeft {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
+
+.slideReact {
+  overflow: hidden;
+
+  .content {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+  .item {
+    flex-shrink: 0;
+    width: 80%;
+    margin: 0 10%;
+    padding: 10rem 0;
+    background-color: transparent;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+  }
+}
