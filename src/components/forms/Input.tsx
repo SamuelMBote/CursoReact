@@ -6,28 +6,56 @@ interface IPropriedades {
   id: string;
   value?: any;
   placeholder?: string;
-  setValue?: React.ComponentState;
   required?: boolean;
   disabled?: boolean;
+  onChange?: Function;
+  onBlur?: Function;
 }
 
-const Input = (props: IPropriedades) => {
+const Input = ({
+  label,
+  type,
+  id,
+  value,
+  placeholder,
+  required,
+  disabled,
+  onChange,
+  onBlur,
+  error,
+}: {
+  label: string;
+  type: string;
+  id: string;
+  value?: any;
+  placeholder?: string;
+  required?: boolean;
+  disabled?: boolean;
+  onChange?: Function;
+  onBlur?: Function;
+  error: string | null;
+}) => {
   return (
     <div className="mb-3">
-      <label htmlFor={props.label.toLowerCase()}>{props.label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
-        placeholder={props.placeholder}
-        id={props.label.toLowerCase()}
-        type={props.type}
-        value={props.value}
-        onChange={({target}) => {
-          props.setValue(target.value);
-        }}
-        autoComplete={props.type === 'password' ? 'on' : 'off'}
         className="form-control"
-        required={props.required}
-        disabled={props.disabled}
+        id={id}
+        name={id}
+        onChange={(Event: React.FocusEvent<HTMLInputElement>) => {
+          if (onChange && onChange instanceof Function) onChange(Event);
+        }}
+        placeholder={placeholder}
+        onBlur={(Event: React.FocusEvent<HTMLInputElement>) => {
+          if (onBlur && onBlur instanceof Function) onBlur(Event);
+        }}
+        type={type}
+        value={value}
+        autoComplete={type === 'password' ? 'on' : 'off'}
+        required={required}
+        disabled={disabled}
       />
+      {error && <p>{error}</p>}
     </div>
   );
 };

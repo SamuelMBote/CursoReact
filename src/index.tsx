@@ -12,35 +12,40 @@ import './scss/main.scss';
 import {GlobalStorage} from './components/providers/ContextGlobal';
 import ProdutosContextos from './components/pages/ProdutosContextos';
 import Formularios from './components/pages/Formularios';
-import IMC from './components/pages/IMC';
 import Animacoes from './components/pages/Animacoes';
 import NotFound from './components/pages/NotFound';
-
+import Login from './components/pages/Login';
+import Produto from './components/pages/Produto';
+import ProdutoAvaliacao from './components/nested/ProdutoAvaliacao';
+import ProdutoCustomizado from './components/nested/ProdutoCustomizado';
+import ProdutoDescricao from './components/nested/ProdutoDescricao';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
 root.render(
-  <React.StrictMode>
-    <GlobalStorage>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="produtos" element={<Produtos />} />
-          <Route path="produtos-contexto" element={<ProdutosContextos />} />
-          <Route path="clientes" element={<Clientes />} />
-          <Route path="livros" element={<Livros />} />
-          <Route path="contato" element={<Contato />} />
-
-          <Route path="formularios" element={<Formularios />} />
-          <Route path="imc" element={<IMC />} />
-          <Route path="animacoes" element={<Animacoes />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </GlobalStorage>
-  </React.StrictMode>,
+  <GlobalStorage>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="produto/:id/*" element={<Produto />}>
+          <Route path="" element={<ProdutoDescricao />} />
+          <Route path="avaliacao" element={<ProdutoAvaliacao />} />
+          <Route path="customizado" element={<ProdutoCustomizado />} />
+        </Route>
+        <Route path="produtos" element={<Produtos />} />
+        <Route path="produtos-contexto" element={<ProdutosContextos />} />
+        <Route path="clientes" element={<Clientes />} />
+        <Route path="livros" element={<Livros />} />
+        <Route path="contato" element={<Contato />} />
+        <Route path="formularios" element={<Formularios />} />
+        <Route path="animacoes" element={<Animacoes />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  </GlobalStorage>,
 );
 

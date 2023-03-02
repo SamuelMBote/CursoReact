@@ -1,15 +1,19 @@
 import React from 'react';
 interface IPropriedades {
-  value: any[];
+  value: string[];
   setValue: React.ComponentState;
   options: {id: string; label: string}[];
 }
 const Checkbox = (props: IPropriedades): JSX.Element => {
   function handleChange({target}: React.ChangeEvent<HTMLInputElement>) {
     if (target.checked) {
-      props.setValue(...props.value, target.value);
+      props.setValue([...props.value, target.value]);
+      console.log('foi marcado', target.value, target.checked);
     } else {
-      console.log('not changeou', target.value);
+      props.setValue(
+        props.value.filter((itemvalue) => itemvalue !== target.value),
+      );
+      console.log('foi desmarcado', target.value, target.checked);
     }
     console.log(props.value);
   }

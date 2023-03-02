@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {GlobalContext} from '../providers/ContextGlobal';
+import Head from './Head';
 import {Links} from './Links';
 
 const Header = () => {
@@ -8,6 +9,7 @@ const Header = () => {
 
   return (
     <header>
+      <Head title="Home" description="Essa é a descricao da Home" />
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="container-fluid">
           <NavLink className={'navbar-brand'} to="/" end>
@@ -19,7 +21,7 @@ const Header = () => {
                 return (
                   <React.Fragment key={link.rota}>
                     <li className="nav-item">
-                      <NavLink className={'nav-link'} to={link.rota} end>
+                      <NavLink className={'nav-link'} to={link.rota}>
                         {link.label}
                       </NavLink>
                     </li>

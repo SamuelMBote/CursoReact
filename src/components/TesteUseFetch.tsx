@@ -26,7 +26,7 @@ const TesteUseFetch = () => {
       </div>
     );
   if (data) {
-    console.log(typeof data);
+    //console.log(typeof data);
   }
   if (data)
     return (
