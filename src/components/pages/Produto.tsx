@@ -8,7 +8,7 @@ const Produto = () => {
   //console.log(params);
   //console.log(location);
   return (
-    <div>
+    <div className="container">
       <h1>Produto: {params.id}</h1>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
